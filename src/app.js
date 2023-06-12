@@ -10,7 +10,12 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 // routes
-app.use(projectsRoutes);
-app.use(taskRoutes);
+app.use("/api", projectsRoutes);
+app.use("/api", taskRoutes);
+app.use((req, res, next) => {
+	res.status(404).json({
+		message: "Endpoint not found",
+	});
+});
 
 export default app;
