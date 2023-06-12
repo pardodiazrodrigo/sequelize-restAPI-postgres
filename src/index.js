@@ -4,7 +4,7 @@ import { PORT } from './config.js'
 
 async function main(PORT) {
 	try {
-		await sequelize.sync({force: false});
+		await sequelize.sync({force: true});
 		app.listen(PORT);
 		console.log("Server on port: " + PORT);
 	} catch (error) {
